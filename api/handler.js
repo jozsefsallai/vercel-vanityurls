@@ -13,6 +13,12 @@ function buildHTML(path, repo) {
   ].join('');
 }
 
+function getPackageName(url) {
+  return url.includes('?')
+    ? url.slice(1, url.indexOf('?')).trim()
+    : url.slice(1).trim();
+}
+
 module.exports = (req, res) => {
   if (req.url && req.url.toLowerCase() === '/favicon.ico') {
     res.statusCode = 204;
@@ -25,7 +31,7 @@ module.exports = (req, res) => {
     return res.status(500).send('Vercel Vanity URLs error: GitHub username not provided.');
   }
 
-  const package = req.url.slice(1).trim();
+  const package = getPackageName(req.url);
   if (!package.length) {
     res.writeHead(301, {
       Location: `https://github.com/${username}`
