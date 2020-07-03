@@ -1,0 +1,10 @@
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/api/handler"
+    }
+  ],
+  "cleanUrls": true,
+  "trailingSlash": false
+}
