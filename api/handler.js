@@ -25,7 +25,7 @@ module.exports = (req, res) => {
     return res.status(500).send('Vercel Vanity URLs error: GitHub username not provided.');
   }
 
-  const package = req.url.slice(1);
+  const package = req.url.slice(1).trim();
   if (!package.length) {
     res.writeHead(301, {
       Location: `https://github.com/${username}`
