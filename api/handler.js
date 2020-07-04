@@ -1,6 +1,7 @@
 function buildHTML(path, repo) {
   return [
     '<!doctype html>',
+    '<html>',
     '<head>',
     `<title>${path}</title>`,
     `<meta name="go-import" content="${path} git ${repo}">`,
